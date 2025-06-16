@@ -11,7 +11,10 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
 
+import {useNavigation} from '@react-navigation/native';
+
 const ProfileScreen = () => {
+  const navigation = useNavigation();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -32,7 +35,9 @@ const ProfileScreen = () => {
           }
           style={styles.profileImage}
         />
-        <TouchableOpacity style={styles.editIcon}>
+        <TouchableOpacity
+          style={styles.editIcon}
+          onPress={() => navigation.navigate('CameraScreen')}>
           <Icon name="camera" size={20} color="#fff" />
         </TouchableOpacity>
       </View>

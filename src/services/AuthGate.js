@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 
 import {ActivityIndicator, View} from 'react-native';
-import MainTabs from '../navigation/MainTabs';
 import AuthStack from '../navigation/AuthStack';
+import AppStack from '../navigation/AppStack';
 
 const AuthGate = () => {
   const [user, setUser] = useState(null);
@@ -26,7 +26,7 @@ const AuthGate = () => {
     );
   }
 
-  return user ? <MainTabs /> : <AuthStack />;
+  return user ? <AppStack /> : <AuthStack />;
 };
 
 export default AuthGate;
