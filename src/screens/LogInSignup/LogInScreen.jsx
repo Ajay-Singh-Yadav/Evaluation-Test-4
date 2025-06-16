@@ -38,7 +38,6 @@ const LogInScreen = () => {
     const user = await login(email, password);
     if (user) {
       resetForm();
-      navigation.replace('MainTab');
     } else {
       Alert.alert(
         'Login Failed',
