@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Alert,
   Image,
@@ -7,7 +8,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
@@ -16,6 +16,7 @@ import {signUp} from '../../services/Auth';
 import LottieView from 'lottie-react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import InputField from '../../components/InputField';
+import {SignUp} from '../../services/Auth';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -32,6 +33,18 @@ const validationSchema = Yup.object().shape({
 const SignUpScreen = () => {
   const navigation = useNavigation();
 
+  const handleSignUp = async (values, {resetForm, setSubmitting}) => {
+    try {
+      await SignUp(values.email, values.password);
+      Alert.alert('Success', 'Account created successfully!');
+      resetForm();
+    } catch (error) {
+      Alert.alert('Sign Up Error', error.message);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -47,24 +60,9 @@ const SignUpScreen = () => {
       />
 
       <Formik
-        initialValues={{
-          email: '',
-          password: '',
-          showPassword: false,
-        }}
+        initialValues={{email: '', password: '', showPassword: false}}
         validationSchema={validationSchema}
-        onSubmit={async (values, {resetForm, setSubmitting}) => {
-          try {
-            await signUp(values.email, values.password);
-            resetForm();
-            Alert.alert('Success', 'Account created successfully!');
-            navigation.navigate('LogIn');
-          } catch (error) {
-            Alert.alert('Sign Up Error', error.message);
-          } finally {
-            setSubmitting(false);
-          }
-        }}>
+        onSubmit={handleSignUp}>
         {({
           handleChange,
           handleBlur,
@@ -99,7 +97,7 @@ const SignUpScreen = () => {
               }
             />
 
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.loaderContainer}>
               {isSubmitting && (
                 <LottieView
                   source={require('../../assets/animation/Loader.json')}
@@ -127,9 +125,7 @@ const SignUpScreen = () => {
       <TouchableOpacity
         onPress={() => navigation.navigate('Login')}
         style={{marginTop: 70}}>
-        <Text style={{fontSize: 16, fontFamily: 'TenorSans-Regular'}}>
-          Already have an account?
-        </Text>
+        <Text style={styles.switchText}>Already have an account?</Text>
       </TouchableOpacity>
 
       <View style={styles.IconsLoginContainer}>
@@ -139,7 +135,6 @@ const SignUpScreen = () => {
             style={styles.LoginIcons}
           />
         </TouchableOpacity>
-
         <TouchableOpacity>
           <Image
             source={require('../../assets/images/Google.png')}
@@ -197,5 +192,13 @@ const styles = StyleSheet.create({
   LoginIcons: {
     width: 50,
     height: 50,
+  },
+  switchText: {
+    fontSize: 16,
+    fontFamily: 'TenorSans-Regular',
+  },
+  loaderContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
