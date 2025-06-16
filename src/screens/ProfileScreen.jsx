@@ -12,32 +12,54 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
 
 import {useNavigation} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 
 const ProfileScreen = () => {
-  const navigation = useNavigation();
+  const route = useRoute();
   const [user, setUser] = useState(null);
+  const [capturedImage, setCapturedImage] = useState(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const currentUser = auth().currentUser;
     setUser(currentUser);
   }, []);
 
+  useEffect(() => {
+    if (route.params?.capturedImage) {
+      setCapturedImage(route.params.capturedImage);
+      navigation.setParams({capturedImage: null}); // clear after first use
+    }
+  }, [route.params?.capturedImage]);
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>My Profile</Text>
 
       <View style={styles.profileImageContainer}>
-        <Image
+        {/* <Image
           source={
             user?.photoURL
               ? {uri: user.photoURL}
               : require('../assets/images/man.png')
           }
           style={styles.profileImage}
+        /> */}
+
+        <Image
+          source={
+            capturedImage
+              ? {uri: capturedImage}
+              : user?.photoURL
+              ? {uri: user.photoURL}
+              : require('../assets/images/man.png')
+          }
+          style={styles.profileImage}
         />
+
         <TouchableOpacity
           style={styles.editIcon}
-          onPress={() => navigation.navigate('CameraScreen')}>
+          onPress={() => navigation.navigate('Camera')}>
           <Icon name="camera" size={20} color="#fff" />
         </TouchableOpacity>
       </View>

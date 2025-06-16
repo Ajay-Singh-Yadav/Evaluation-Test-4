@@ -13,8 +13,10 @@ import {
 } from 'react-native';
 import {Camera, useCameraDevice} from 'react-native-vision-camera';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
 const CameraScreen = () => {
+  const navigation = useNavigation();
   const cameraRef = useRef(null);
   const [hasPermission, setHasPermission] = useState(false);
   const [cameraActive, setCameraActive] = useState(false);
@@ -53,12 +55,26 @@ const CameraScreen = () => {
     })();
   }, []);
 
+  // const takePhoto = async () => {
+  //   if (cameraRef.current) {
+  //     try {
+  //       const photo = await cameraRef.current.takePhoto();
+  //       setCapturedImage(photo.path); // SET captured image path
+  //       Alert.alert('Photo Captured');
+  //     } catch (error) {
+  //       console.error('Capture failed:', error);
+  //     }
+  //   }
+  // };
+
   const takePhoto = async () => {
     if (cameraRef.current) {
       try {
         const photo = await cameraRef.current.takePhoto();
-        setCapturedImage(photo.path); // SET captured image path
-        Alert.alert('Photo Captured');
+        navigation.navigate('MainTabs', {
+          screen: 'Profile',
+          params: {capturedImage: 'file://' + photo.path},
+        });
       } catch (error) {
         console.error('Capture failed:', error);
       }
