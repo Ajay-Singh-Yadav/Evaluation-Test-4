@@ -1,11 +1,28 @@
-import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  Button,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+  reset,
+} from '../redux/slices/counterSlice';
 
 const HomeScreen = () => {
+  const count = useSelector(state => state.counter.value);
+  const dispatch = useDispatch();
+
   const navigation = useNavigation();
   const [userEmail, setUserEmail] = useState('');
 
@@ -36,6 +53,12 @@ const HomeScreen = () => {
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>
+
+      <Text style={styles.counter}>Count: {count}</Text>
+      <Button title="Increment" onPress={() => dispatch(increment())} />
+      <Button title="Decrement" onPress={() => dispatch(decrement())} />
+      <Button title="Add 5" onPress={() => dispatch(incrementByAmount(5))} />
+      <Button title="Reset" onPress={() => dispatch(reset())} />
     </LinearGradient>
   );
 };
@@ -69,5 +92,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontFamily: 'TenorSans-Regular',
+  },
+  counter: {
+    fontSize: 30,
+    marginBottom: 20,
   },
 });
