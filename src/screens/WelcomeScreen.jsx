@@ -3,14 +3,6 @@ import React, {use, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 const WelcomeScreen = () => {
-  const navigation = useNavigation();
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.navigate('Login');
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome, Ajay!</Text>
