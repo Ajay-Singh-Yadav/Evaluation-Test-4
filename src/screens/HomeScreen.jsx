@@ -19,7 +19,6 @@ const HomeScreen = () => {
   const handleLogout = async () => {
     try {
       await auth().signOut();
-      navigation.replace('Login');
     } catch (error) {
       Alert.alert('Logout Error', error.message);
     }
