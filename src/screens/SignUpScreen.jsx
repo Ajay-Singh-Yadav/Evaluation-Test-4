@@ -1,28 +1,29 @@
+// // src/screens/SignUpScreen.js
 // import React from 'react';
 // import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
 // import {Formik} from 'formik';
 // import * as Yup from 'yup';
-// import {useNavigation} from '@react-navigation/native';
-// import { login } from '../services/Auth';
 
-// const LoginScreen = () => {
-//   const navigation = useNavigation();
-//   const loginSchema = Yup.object().shape({
+// const SignUpScreen = ({navigation}) => {
+//   const signupSchema = Yup.object().shape({
 //     email: Yup.string().email('Invalid email').required('Email is required'),
 //     password: Yup.string()
 //       .min(6, 'Min 6 characters')
 //       .required('Password is required'),
+//     confirmPassword: Yup.string()
+//       .oneOf([Yup.ref('password')], 'Passwords must match')
+//       .required('Confirm your password'),
 //   });
 
 //   return (
 //     <View style={styles.container}>
-//       <Text style={styles.title}>Login</Text>
+//       <Text style={styles.title}>Sign Up</Text>
 
 //       <Formik
-//         initialValues={{email: '', password: ''}}
-//         validationSchema={loginSchema}
+//         initialValues={{email: '', password: '', confirmPassword: ''}}
+//         validationSchema={signupSchema}
 //         onSubmit={values => {
-//           console.log('Login Values:', values);
+//           console.log('Signup Values:', values);
 //         }}>
 //         {({
 //           handleChange,
@@ -49,21 +50,31 @@
 //             <TextInput
 //               placeholder="Password"
 //               style={styles.input}
+//               secureTextEntry
 //               onChangeText={handleChange('password')}
 //               onBlur={handleBlur('password')}
 //               value={values.password}
-//               secureTextEntry
 //             />
 //             {touched.password && errors.password && (
 //               <Text style={styles.error}>{errors.password}</Text>
 //             )}
 
-//             <Button title="Login" onPress={handleSubmit} />
+//             <TextInput
+//               placeholder="Confirm Password"
+//               style={styles.input}
+//               secureTextEntry
+//               onChangeText={handleChange('confirmPassword')}
+//               onBlur={handleBlur('confirmPassword')}
+//               value={values.confirmPassword}
+//             />
+//             {touched.confirmPassword && errors.confirmPassword && (
+//               <Text style={styles.error}>{errors.confirmPassword}</Text>
+//             )}
 
-//             <Text
-//               style={styles.link}
-//               onPress={() => navigation.navigate('SignUp')}>
-//               Don't have an account? Sign up
+//             <Button title="Sign Up" onPress={handleSubmit} />
+
+//             <Text style={styles.link} onPress={() => navigation.goBack()}>
+//               Already have an account? Login
 //             </Text>
 //           </>
 //         )}
@@ -72,7 +83,7 @@
 //   );
 // };
 
-// export default LoginScreen;
+// export default SignUpScreen;
 
 // const styles = StyleSheet.create({
 //   container: {
@@ -97,6 +108,11 @@
 //     color: 'red',
 //     marginBottom: 10,
 //   },
+//   link: {
+//     marginTop: 15,
+//     textAlign: 'center',
+//     color: '#007BFF',
+//   },
 // });
 
 import React from 'react';
@@ -106,37 +122,40 @@ import * as Yup from 'yup';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 
-const LoginScreen = () => {
+const SignUpScreen = () => {
   const navigation = useNavigation();
 
-  const loginSchema = Yup.object().shape({
+  const signupSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string()
-      .min(6, 'Min 6 characters')
+      .min(6, 'Minimum 6 characters')
       .required('Password is required'),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password')], 'Passwords must match')
+      .required('Confirm your password'),
   });
 
-  const handleLogin = async (email, password) => {
+  const handleSignUp = async (email, password) => {
     try {
-      const userCredential = await auth().signInWithEmailAndPassword(
+      const userCredential = await auth().createUserWithEmailAndPassword(
         email,
         password,
       );
-      console.log('User logged in:', userCredential.user.email);
-      navigation.replace('MainTab'); // Navigate to MainTab after login
+      console.log('User signed up:', userCredential.user.email);
+      navigation.replace('MainTab'); // Navigate after successful signup
     } catch (error) {
-      Alert.alert('Login Error', error.message);
+      Alert.alert('Signup Error', error.message);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Sign Up</Text>
 
       <Formik
-        initialValues={{email: '', password: ''}}
-        validationSchema={loginSchema}
-        onSubmit={values => handleLogin(values.email, values.password)}>
+        initialValues={{email: '', password: '', confirmPassword: ''}}
+        validationSchema={signupSchema}
+        onSubmit={values => handleSignUp(values.email, values.password)}>
         {({
           handleChange,
           handleBlur,
@@ -162,21 +181,31 @@ const LoginScreen = () => {
             <TextInput
               placeholder="Password"
               style={styles.input}
+              secureTextEntry
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
               value={values.password}
-              secureTextEntry
             />
             {touched.password && errors.password && (
               <Text style={styles.error}>{errors.password}</Text>
             )}
 
-            <Button title="Login" onPress={handleSubmit} />
+            <TextInput
+              placeholder="Confirm Password"
+              style={styles.input}
+              secureTextEntry
+              onChangeText={handleChange('confirmPassword')}
+              onBlur={handleBlur('confirmPassword')}
+              value={values.confirmPassword}
+            />
+            {touched.confirmPassword && errors.confirmPassword && (
+              <Text style={styles.error}>{errors.confirmPassword}</Text>
+            )}
 
-            <Text
-              style={styles.link}
-              onPress={() => navigation.navigate('SignUp')}>
-              Don't have an account? Sign up
+            <Button title="Sign Up" onPress={handleSubmit} />
+
+            <Text style={styles.link} onPress={() => navigation.goBack()}>
+              Already have an account? Login
             </Text>
           </>
         )}
@@ -185,7 +214,7 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
   container: {
