@@ -8,7 +8,9 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 
 const AuthGate = () => {
   const [initializing, setInitializing] = useState(true);
+
   const [user, setUser] = useState(null);
+
   const [showWelcome, setShowWelcome] = useState(true);
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const AuthGate = () => {
       setShowWelcome(true);
       setTimeout(() => {
         setShowWelcome(false);
-      }, 3000);
+      }, 20000);
     };
     checkWelcome();
   }, []);
@@ -31,7 +33,9 @@ const AuthGate = () => {
   }, []);
 
   if (showWelcome) return <WelcomeScreen />;
+
   if (initializing) return <ActivityIndicator size="large" color="tomato" />;
+
   return user ? <AppStack /> : <AuthStack />;
 };
 

@@ -164,11 +164,11 @@ const styles = StyleSheet.create({
   },
   addButton: {
     backgroundColor: '#007AFF',
-    padding: 12,
-    borderRadius: 8,
+    height: 45,
+    paddingHorizontal: 15,
+    justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 10,
-    marginBottom: 30,
+    borderRadius: 8,
   },
   addText: {
     color: '#fff',
@@ -188,8 +188,10 @@ const styles = StyleSheet.create({
   },
   inputRow: {
     flexDirection: 'row',
+    alignItems: 'center', // Vertically center content
+    justifyContent: 'center', // ✅ Horizontally center the entire row
     marginTop: 10,
-    alignItems: 'center',
+
     gap: 10,
     marginBottom: 50,
   },
