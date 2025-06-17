@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
   lottie: {
     width: width * 0.7,
     height: height * 0.3,
-    marginTop: 50,
-    color: 'white',
+    marginTop: 500,
   },
 });

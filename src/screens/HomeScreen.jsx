@@ -81,7 +81,7 @@ const HomeScreen = () => {
       ) : (
         <FlatList
           data={users}
-          nestedScrollEnabled={true}
+          scrollEnabled={false}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => (
             <View style={styles.userCard}>
@@ -119,6 +119,7 @@ const HomeScreen = () => {
         <View style={styles.inputRow}>
           <TextInput
             placeholder="Enter a task..."
+            placeholderTextColor="#ccc"
             value={task}
             onChangeText={setTask}
             style={styles.input}

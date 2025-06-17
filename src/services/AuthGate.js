@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator} from 'react-native';
 import auth from '@react-native-firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import AppStack from '../navigation/AppStack';
 import AuthStack from '../navigation/AuthStack';
