@@ -28,6 +28,19 @@ npm intsall @react-native-firebase/auth
 ```
 
 3. Auth flow includes:
+
+   <small>
+
+**Used For:**
+- Managing To-Do List
+- CRUD operations on tasks
+- UI updates without prop-drilling
+
+**Store Structure:**
+- `src/redux/store.js`
+- `src/redux/slices/todoSlice.js`
+
+</small>
 <small>
 - Signup
 
