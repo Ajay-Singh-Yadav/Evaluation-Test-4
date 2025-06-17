@@ -106,6 +106,10 @@ setUsers(response.data);
 
   - Integrated using react-native-vision-camera.
 
+    ```xml
+    npm install react-native-vision-camera
+    ```
+
 #### Features include:
 
    - Switch front/rear camera
