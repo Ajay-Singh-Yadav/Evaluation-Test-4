@@ -42,13 +42,13 @@ Protected routes after login
 
 ## 📝 2. Formik + Yup for Form Handling
 
-Used for managing form state and validation.
+   - Used for managing form state and validation.
 
-Email and Password fields with validation
+   - Email and Password fields with validation
 
-Show/Hide password toggle
+   - Show/Hide password toggle
 
-Real-time error handling
+   - Real-time error handling
 
  #### Packages:
  ```xml
@@ -85,7 +85,7 @@ Store Structure:
 
 #### Features:
 
-Add, update, delete tasks
+  - Add, update, delete tasks
 
 
 ## 🌐 4. API Integration with Axios
@@ -108,15 +108,15 @@ setUsers(response.data);
 
 #### Features include:
 
-Switch front/rear camera
+   - Switch front/rear camera
 
-Capture photo
+   - Capture photo
 
-set on profile photo
+   - set on profile photo
 
 #### Components:
 
-CameraScreen.js 
+   - CameraScreen.js 
 
 Uses useRef for camera control
 
@@ -124,7 +124,6 @@ Uses useRef for camera control
 ## 🗂 Folder Structure
 
 ![folders](https://github.com/user-attachments/assets/61384c84-7cc7-47e6-88b2-ce7658ebe699)
-
 
 
 ## 🛠 Setup Instructions
