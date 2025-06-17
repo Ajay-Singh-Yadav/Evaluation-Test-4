@@ -13,6 +13,39 @@ This is a React Native mobile app with useful features:
 
 📸 Camera Feature using React Native Vision Camera.
 
+## 🛠 Setup Instructions
+
+### 1. Install Dependencies:
+```xml
+npm install
+```
+
+### 2. Firebase Setup:
+ - Add Firebase project.
+
+ - Enable Email/Password Auth.
+
+ - Add config to your project.
+
+
+### 3.Start Project:
+```xml
+npx react-native run-android
+```
+
+## 📸 Permissions Required
+
+Update AndroidManifest.xml:
+
+```xml
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+```
+
+
+
 ## 📋 Features Overview
 
 ### ✅ 1. Authentication with Firebase
@@ -129,37 +162,6 @@ setUsers(response.data);
 
 ![folders](https://github.com/user-attachments/assets/61384c84-7cc7-47e6-88b2-ce7658ebe699)
 
-
-## 🛠 Setup Instructions
-
-### 1. Install Dependencies:
-```xml
-npm install
-```
-
-### 2. Firebase Setup:
- - Add Firebase project.
-
- - Enable Email/Password Auth.
-
- - Add config to your project.
-
-
-### 3.Start Project:
-```xml
-npx react-native run-android
-```
-
-## 📸 Permissions Required
-
-Update AndroidManifest.xml:
-
-```xml
-<uses-permission android:name="android.permission.CAMERA" />
-<uses-permission android:name="android.permission.RECORD_AUDIO"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-```
 
 
 
