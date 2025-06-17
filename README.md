@@ -166,6 +166,31 @@ setUsers(response.data);
 
 
 
+1. What is the difference between React and React Native? 
+React is used for building web applications using HTML, CSS, and JavaScript.
+React Native is used for building mobile apps using native components for iOS and Android.
+
+2. How does FlatList differ from ScrollView?
+FlatList renders only visible items for better performance with large lists.
+ScrollView renders all items at once, which can cause performance issues.
+
+3. What is the purpose of Redux Toolkit’s createAsyncThunk? 
+It simplifies handling async actions like API calls by generating pending, fulfilled, and rejected actions automatically.
+
+4. Explain the role of JWT in authentication. 
+JWT is used to securely transmit user identity. After login, the token is used to verify the user for protected routes.
+
+5. How does Flexbox help in designing mobile layouts in React Native?
+Flexbox provides a layout system to align, distribute, and space components responsively across different screen sizes.
+
+6. What are Native Modules and why are they needed? 
+Native Modules are custom native code (Java/Swift) used in React Native to access device features like camera or sensors.
+They are needed when functionality is not available in JavaScript or React Native.
+
+
+
+
+
 
 
 
