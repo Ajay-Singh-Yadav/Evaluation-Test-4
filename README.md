@@ -166,7 +166,7 @@ setUsers(response.data);
 
 
 
-## 📝  
+## 📝  Questions and Answers
 
 ### 1. What is the difference between React and React Native? 
 - **React** is for building web applications using HTML, CSS, and JavaScript.
