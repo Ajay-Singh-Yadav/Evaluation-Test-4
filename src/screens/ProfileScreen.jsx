@@ -37,15 +37,6 @@ const ProfileScreen = () => {
       <Text style={styles.title}>My Profile</Text>
 
       <View style={styles.profileImageContainer}>
-        {/* <Image
-          source={
-            user?.photoURL
-              ? {uri: user.photoURL}
-              : require('../assets/images/man.png')
-          }
-          style={styles.profileImage}
-        /> */}
-
         <Image
           source={
             capturedImage
@@ -65,7 +56,7 @@ const ProfileScreen = () => {
       </View>
 
       <View style={styles.infoContainer}>
-        <InfoItem label="Full Name" value={user?.displayName || 'John Doe'} />
+        <InfoItem label="Full Name" value={user?.displayName || 'Ajay Yadav'} />
         <InfoItem label="Email" value={user?.email || 'example@gmail.com'} />
         <InfoItem label="Phone" value="+91 9876543210" />
         <InfoItem label="Password" value="••••••••••" isSecure />

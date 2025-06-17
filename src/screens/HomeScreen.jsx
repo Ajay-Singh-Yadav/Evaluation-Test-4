@@ -70,7 +70,7 @@ const HomeScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>📡 Users (API Integration)</Text>
+      <Text style={styles.title}>Users List from API (JSONPlaceholder)</Text>
 
       {loading ? (
         <ActivityIndicator
@@ -151,25 +151,6 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     color: '#333',
   },
-  card: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#eef6ff',
-    padding: 10,
-    borderRadius: 10,
-    marginBottom: 8,
-  },
-  cardContent: {
-    marginLeft: 10,
-  },
-  cardTitle: {
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  cardSubtitle: {
-    fontSize: 13,
-    color: '#666',
-  },
   todoItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -193,33 +174,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
-  captureBtn: {
-    backgroundColor: '#4CAF50',
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 12,
-    borderRadius: 8,
-    gap: 10,
-    justifyContent: 'center',
-    marginTop: 10,
-  },
-  captureText: {
-    color: '#fff',
-    fontSize: 16,
-    marginLeft: 10,
-  },
-  capturedImage: {
-    height: 150,
-    width: '100%',
-    marginTop: 15,
-    borderRadius: 10,
-  },
 
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginVertical: 10,
-  },
   todoItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -245,16 +200,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
   },
-  addButton: {
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    borderRadius: 8,
-  },
-  addText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
+
   userCard: {
     backgroundColor: '#fff',
     flexDirection: 'row',
