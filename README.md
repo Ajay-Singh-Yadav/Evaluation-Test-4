@@ -166,34 +166,30 @@ setUsers(response.data);
 
 
 
-1. What is the difference between React and React Native?
-   
-React is used for building web applications using HTML, CSS, and JavaScript.
-React Native is used for building mobile apps using native components for iOS and Android.
+## 📝  
 
-3. How does FlatList differ from ScrollView?
+### 1. What is the difference between React and React Native? 
+- **React** is for building web applications using HTML, CSS, and JavaScript.
+- **React Native** is for building mobile apps using native components for iOS and Android.
 
-FlatList renders only visible items for better performance with large lists.
-ScrollView renders all items at once, which can cause performance issues.
+### 2. How does FlatList differ from ScrollView? 
+- `FlatList` renders only visible items — optimized for long lists.
+- `ScrollView` renders all items at once — not ideal for large datasets.
 
-5. What is the purpose of Redux Toolkit’s createAsyncThunk?
-   
-It simplifies handling async actions like API calls by generating pending, fulfilled, and rejected actions automatically.
+### 3. What is the purpose of Redux Toolkit’s `createAsyncThunk`? 
+- It simplifies async logic (like API calls) by generating pending, fulfilled, and rejected actions.
 
-7. Explain the role of JWT in authentication.
-   
-JWT is used to securely transmit user identity. After login, the token is used to verify the user for protected routes.
+### 4. Explain the role of JWT in authentication. 
+- JWT securely transmits user identity.
+- After login, the token verifies the user for protected routes.
 
-9. How does Flexbox help in designing mobile layouts in React Native?
-    
-Flexbox provides a layout system to align, distribute, and space components responsively across different screen sizes.
+### 5. How does Flexbox help in designing mobile layouts in React Native? 
+- Flexbox helps align and space UI components across screen sizes.
+- It makes layouts responsive and consistent.
 
-11. What are Native Modules and why are they needed?
-    
-Native Modules are custom native code (Java/Swift) used in React Native to access device features like camera or sensors.
-They are needed when functionality is not available in JavaScript or React Native.
-
-
+### 6. What are Native Modules and why are they needed? 
+- Native Modules are written in platform-specific code (Java/Swift).
+- They are needed when access to native device features is required (e.g., Camera, Bluetooth).
 
 
 
