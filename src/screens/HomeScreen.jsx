@@ -70,8 +70,6 @@ const HomeScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      {/* Section 1: API Users */}
-
       <Text style={styles.title}>📡 Users (API Integration)</Text>
 
       {loading ? (
@@ -83,14 +81,17 @@ const HomeScreen = () => {
       ) : (
         <FlatList
           data={users}
-          nestedScrollEnabled={false}
+          nestedScrollEnabled={true}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => (
-            <View style={styles.card}>
-              <Icon name="person-circle-outline" size={30} color="#007AFF" />
-              <View style={styles.cardContent}>
-                <Text style={styles.cardTitle}>{item.name}</Text>
-                <Text style={styles.cardSubtitle}>{item.email}</Text>
+            <View style={styles.userCard}>
+              <Image
+                source={require('../assets/images/man.png')}
+                style={styles.userImage}
+              />
+              <View style={{marginLeft: 15}}>
+                <Text style={styles.userName}>{item.name}</Text>
+                <Text style={styles.userEmail}>{item.email}</Text>
               </View>
             </View>
           )}
@@ -252,5 +253,54 @@ const styles = StyleSheet.create({
   addText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  userCard: {
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    borderRadius: 20,
+    alignItems: 'center',
+    paddingVertical: 20,
+    paddingHorizontal: 15,
+    marginVertical: 10,
+    marginHorizontal: 20,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+
+  userImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginBottom: 10,
+  },
+
+  userName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginTop: 5,
+  },
+
+  userEmail: {
+    fontSize: 14,
+    color: '#666',
+    marginVertical: 4,
+    textAlign: 'center',
+  },
+
+  userButton: {
+    marginTop: 10,
+    backgroundColor: '#007AFF',
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+  },
+
+  userButtonText: {
+    color: '#fff',
+    fontWeight: '600',
   },
 });
