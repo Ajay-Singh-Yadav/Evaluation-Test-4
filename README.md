@@ -20,14 +20,17 @@ This is a React Native mobile app with useful features:
 
 2. Packages:
 
-     npm install @react-native-firebase/app
-     npm intsall @react-native-firebase/auth
+npm install @react-native-firebase/app
+
+npm intsall @react-native-firebase/auth
 
 3. Auth flow includes:
 
-     Signup
-     Login
-     Logout
+Signup
+
+Login
+
+Logout
 
 Protected routes after login
 
@@ -35,16 +38,15 @@ Protected routes after login
 
 ## 📝 2. Formik + Yup for Form Handling
 
-   Used for managing form state and validation.
+Used for managing form state and validation.
 
-   Email and Password fields with validation
+Email and Password fields with validation
 
-   Show/Hide password toggle
+Show/Hide password toggle
 
-   Real-time error handling
+Real-time error handling
 
  #### Packages:
- 
   npm install formik yup 
 
   Sample Usage:
@@ -62,15 +64,15 @@ Setup using @reduxjs/toolkit and react-redux.
 
 Used for:
 
-  Managing To-Do List
+Managing To-Do List
 
-  CRUD operations on tasks
+CRUD operations on tasks
 
-  UI updates without prop-drilling
+UI updates without prop-drilling
 
-  Store Structure:
+Store Structure:
 
-  src/redux/store.js
+src/redux/store.js
 
 src/redux/slices/todoSlice.js
 
@@ -112,6 +114,9 @@ Uses useRef for camera control
 
 
 ## 🗂 Folder Structure
+
+ ![folderStructure](https://github.com/user-attachments/assets/f07b9615-9b19-4b7b-badd-7465b1131ced)
+
 
 ## 🛠 Setup Instructions
 
