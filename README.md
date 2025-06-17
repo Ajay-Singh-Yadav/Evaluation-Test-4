@@ -136,20 +136,15 @@ Add config to your project.
 ### 3.Start Project:
 npx react-native run-android
 
-## 📸 Permissions Required
+## 📸 Permissions Required\
+
+Update AndroidManifest.xml:
 
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> 
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-## ✨ Future Improvements
-Add biometric login
-
-Use secure storage for tokens
-
-
-Firebase Firestore for real-time todos
 
 
 
