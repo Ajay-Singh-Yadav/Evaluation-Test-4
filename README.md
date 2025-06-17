@@ -122,7 +122,7 @@ setUsers(response.data);
 
    - CameraScreen.js 
 
-Uses useRef for camera control
+   -Uses useRef for camera control
 
 
 ## 🗂 Folder Structure
