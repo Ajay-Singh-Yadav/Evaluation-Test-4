@@ -1,5 +1,4 @@
-// HomeScreen.js
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -8,78 +7,130 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  ActivityIndicator,
+  TextInput,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
 
-const dummyUsers = [
-  {id: 1, name: 'John Doe', email: 'john@example.com'},
-  {id: 2, name: 'Jane Smith', email: 'jane@example.com'},
-  {id: 3, name: 'Alice Brown', email: 'alice@example.com'},
-  {id: 4, name: 'John Doe', email: 'john@example.com'},
-  {id: 5, name: 'Jane Smith', email: 'jane@example.com'},
-  {id: 6, name: 'Alice Brown', email: 'alice@example.com'},
-  {id: 7, name: 'John Doe', email: 'john@example.com'},
-  {id: 8, name: 'Jane Smith', email: 'jane@example.com'},
-  {id: 9, name: 'Alice Brown', email: 'alice@example.com'},
-  {id: 10, name: 'Alice Brown', email: 'alice@example.com'},
-  {id: 11, name: 'John Doe', email: 'john@example.com'},
-  {id: 12, name: 'Jane Smith', email: 'jane@example.com'},
-  {id: 13, name: 'Alice Brown', email: 'alice@example.com'},
-];
-
-const dummyTodos = [
-  {id: 1, task: 'Learn Redux Toolkit'},
-  {id: 2, task: 'Integrate Axios API'},
-  {id: 3, task: 'Learn Redux Toolkit'},
-  {id: 4, task: 'Integrate Axios API'},
-  {id: 5, task: 'Learn Redux Toolkit'},
-  {id: 6, task: 'Integrate Axios API'},
-];
+import {useDispatch, useSelector} from 'react-redux';
+import {addTodo, updateTodo, deleteTodo} from '../redux/slices/todoSlice';
+import axios from 'axios';
 
 const HomeScreen = () => {
+  const todos = useSelector(state => state.todos);
+  const dispatch = useDispatch();
+
+  const [task, setTask] = useState('');
+  const [editId, setEditId] = useState(null);
+
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const handleAddOrUpdate = () => {
+    if (!task.trim()) return;
+
+    if (editId) {
+      dispatch(updateTodo({id: editId, newTask: task}));
+      setEditId(null);
+    } else {
+      dispatch(addTodo(task));
+    }
+
+    setTask('');
+  };
+
+  const handleEdit = item => {
+    setTask(item.task);
+    setEditId(item.id);
+  };
+
+  const handleDelete = id => {
+    Alert.alert('Delete', 'Are you sure?', [
+      {text: 'Cancel'},
+      {text: 'Delete', onPress: () => dispatch(deleteTodo(id))},
+    ]);
+  };
+
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get('https://jsonplaceholder.typicode.com/users');
+      setUsers(res.data);
+    } catch (err) {
+      console.error('Failed to fetch users:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       {/* Section 1: API Users */}
+
       <Text style={styles.title}>📡 Users (API Integration)</Text>
-      <FlatList
-        data={dummyUsers}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => (
-          <View style={styles.card}>
-            <Icon name="person-circle-outline" size={30} color="#007AFF" />
-            <View style={styles.cardContent}>
-              <Text style={styles.cardTitle}>{item.name}</Text>
-              <Text style={styles.cardSubtitle}>{item.email}</Text>
+
+      {loading ? (
+        <ActivityIndicator
+          size="large"
+          color="tomato"
+          style={{marginTop: 20}}
+        />
+      ) : (
+        <FlatList
+          data={users}
+          nestedScrollEnabled={false}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => (
+            <View style={styles.card}>
+              <Icon name="person-circle-outline" size={30} color="#007AFF" />
+              <View style={styles.cardContent}>
+                <Text style={styles.cardTitle}>{item.name}</Text>
+                <Text style={styles.cardSubtitle}>{item.email}</Text>
+              </View>
             </View>
-          </View>
-        )}
-      />
+          )}
+        />
+      )}
 
       {/* Section 2: To-Do List (Redux) */}
       <Text style={styles.title}>✅ To-Do List (Redux Toolkit)</Text>
-      {dummyTodos.map(todo => (
-        <View key={todo.id} style={styles.todoItem}>
-          <Text style={styles.todoText}>{todo.task}</Text>
-          <TouchableOpacity>
-            <Icon name="trash-outline" size={20} color="red" />
+
+      <View>
+        {todos.map(todo => (
+          <View key={todo.id} style={styles.todoItem}>
+            <Text style={styles.todoText}>{todo.task}</Text>
+            <View style={{flexDirection: 'row', gap: 25}}>
+              <TouchableOpacity onPress={() => handleEdit(todo)}>
+                <Feather name="edit" size={20} color="green" />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => handleDelete(todo.id)}>
+                <Icon name="trash-outline" size={20} color="red" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        ))}
+
+        <View style={styles.inputRow}>
+          <TextInput
+            placeholder="Enter a task..."
+            value={task}
+            onChangeText={setTask}
+            style={styles.input}
+          />
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={handleAddOrUpdate}>
+            <Text style={styles.addText}>
+              {editId ? 'Update' : '+ Add Todo'}
+            </Text>
           </TouchableOpacity>
         </View>
-      ))}
-      <TouchableOpacity style={styles.addButton}>
-        <Text style={styles.addText}>+ Add Todo</Text>
-      </TouchableOpacity>
-
-      {/* Section 3: Camera Feature */}
-      <Text style={styles.title}>📷 Camera Capture (Native Feature)</Text>
-      <TouchableOpacity style={styles.captureBtn}>
-        <Icon name="camera" size={24} color="#fff" />
-        <Text style={styles.captureText}>Capture Image</Text>
-      </TouchableOpacity>
-
-      <Image
-        source={{uri: 'https://via.placeholder.com/150'}}
-        style={styles.capturedImage}
-      />
+      </View>
     </ScrollView>
   );
 };
@@ -134,6 +185,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     marginVertical: 10,
+    marginBottom: 30,
   },
   addText: {
     color: '#fff',
@@ -159,5 +211,46 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 15,
     borderRadius: 10,
+  },
+
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginVertical: 10,
+  },
+  todoItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 12,
+    marginVertical: 6,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+  },
+  todoText: {
+    fontSize: 16,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    marginTop: 10,
+    alignItems: 'center',
+    gap: 10,
+    marginBottom: 50,
+  },
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+  },
+  addButton: {
+    backgroundColor: '#007AFF',
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  addText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });

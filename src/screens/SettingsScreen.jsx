@@ -25,7 +25,6 @@ const SettingsScreen = () => {
   const handleLogout = async () => {
     try {
       await auth().signOut();
-      navigation.replace('Login'); // or navigate to Auth Stack
     } catch (error) {
       Alert.alert('Logout Error', error.message);
     }

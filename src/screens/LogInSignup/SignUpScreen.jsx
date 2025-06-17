@@ -75,6 +75,16 @@ const SignUpScreen = () => {
         }) => (
           <>
             <InputField
+              iconName="user"
+              placeholder="Username"
+              value={values.email}
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              error={touched.email && errors.email}
+              keyboardType="email-address"
+            />
+
+            <InputField
               iconName="mail"
               placeholder="Email"
               value={values.email}
@@ -86,6 +96,19 @@ const SignUpScreen = () => {
             <InputField
               iconName="lock"
               placeholder="Password"
+              value={values.password}
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              error={touched.password && errors.password}
+              isPassword
+              showPassword={values.showPassword}
+              toggleShowPassword={() =>
+                setFieldValue('showPassword', !values.showPassword)
+              }
+            />
+            <InputField
+              iconName="lock"
+              placeholder="Confirm Password"
               value={values.password}
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}

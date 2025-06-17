@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: 330,
+    width: 430,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 10,

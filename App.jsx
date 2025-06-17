@@ -18,11 +18,3 @@ const App = () => {
 };
 
 export default App;
-
-//  <Stack.Navigator>
-
-//       <Stack.Screen name="Login" component={LogInScreen} />
-//       <Stack.Screen name="SignUp" component={SignUpScreen} />
-
-//       <Stack.Screen name="MainTab" component={MainTabs} />
-//     </Stack.Navigator>

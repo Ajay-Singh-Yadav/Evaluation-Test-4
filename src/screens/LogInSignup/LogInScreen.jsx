@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   LoginText: {
     fontSize: 40,
     fontFamily: 'TenorSans-Regular',
-    marginTop: 100,
+    marginTop: 150,
   },
   lineImage: {
     marginTop: 10,
