@@ -21,7 +21,7 @@ const CameraScreen = () => {
   const [hasPermission, setHasPermission] = useState(false);
   const [cameraActive, setCameraActive] = useState(false);
   const [cameraType, setCameraType] = useState('back');
-  const [capturedImage, setCapturedImage] = useState(null); // NEW
+  const [capturedImage, setCapturedImage] = useState(null);
 
   const device = useCameraDevice(cameraType);
 
@@ -54,18 +54,6 @@ const CameraScreen = () => {
       setCameraActive(true);
     })();
   }, []);
-
-  // const takePhoto = async () => {
-  //   if (cameraRef.current) {
-  //     try {
-  //       const photo = await cameraRef.current.takePhoto();
-  //       setCapturedImage(photo.path); // SET captured image path
-  //       Alert.alert('Photo Captured');
-  //     } catch (error) {
-  //       console.error('Capture failed:', error);
-  //     }
-  //   }
-  // };
 
   const takePhoto = async () => {
     if (cameraRef.current) {
