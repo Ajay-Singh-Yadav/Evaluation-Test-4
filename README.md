@@ -20,9 +20,12 @@ This is a React Native mobile app with useful features:
 
 2. Packages:
 
+```xml
 npm install @react-native-firebase/app
 
 npm intsall @react-native-firebase/auth
+
+```
 
 3. Auth flow includes:
 
@@ -47,15 +50,18 @@ Show/Hide password toggle
 Real-time error handling
 
  #### Packages:
-  npm install formik yup 
+ ```xml
+  npm install formik yup
+```
 
   Sample Usage:
-
+```xml
  <Formik
   initialValues={{ email: '', password: '' }}
   validationSchema={validationSchema}
   onSubmit={handleLogin}
 >
+```
 
 
 ## 🔄 3. Redux Toolkit for Global State Management
@@ -90,9 +96,10 @@ Integrated https://jsonplaceholder.typicode.com/users
 Users are displayed via FlatList.
 
 #### Sample API Usage:
-
+```xml
 const response = await axios.get('https://jsonplaceholder.typicode.com/users');
 setUsers(response.data);
+```
 
 ## 📸 5. Camera Functionality
 
@@ -122,8 +129,9 @@ Uses useRef for camera control
 ## 🛠 Setup Instructions
 
 ### 1. Install Dependencies:
-
+```xml
 npm install
+```
 
 ### 2. Firebase Setup:
 Add Firebase project.
@@ -134,7 +142,9 @@ Add config to your project.
 
 
 ### 3.Start Project:
+```xml
 npx react-native run-android
+```
 
 ## 📸 Permissions Required
 
