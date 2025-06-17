@@ -188,7 +188,7 @@ setUsers(response.data);
 - It makes layouts responsive and consistent.
 
 ### 6. What are Native Modules and why are they needed? 
-- Native Modules are written in platform-specific code (Java/Swift).
+- Native Modules are written in platform-specific code ((Java-kotlin)/Swift).
 - They are needed when access to native device features is required (e.g., Camera, Bluetooth).
 
 
