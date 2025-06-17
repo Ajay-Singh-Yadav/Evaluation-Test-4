@@ -159,7 +159,7 @@ setUsers(response.data);
 
 ## 🗂 Folder Structure
 
-![folders](https://github.com/user-attachments/assets/61384c84-7cc7-47e6-88b2-ce7658ebe699)
+![alt text](folders.png)
 
 ## 📝 Questions and Answers
 
