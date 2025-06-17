@@ -115,7 +115,8 @@ Uses useRef for camera control
 
 ## 🗂 Folder Structure
 
- ![folderStructure](https://github.com/user-attachments/assets/f07b9615-9b19-4b7b-badd-7465b1131ced)
+![folders](https://github.com/user-attachments/assets/61384c84-7cc7-47e6-88b2-ce7658ebe699)
+
 
 
 ## 🛠 Setup Instructions
