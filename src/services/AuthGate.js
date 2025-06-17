@@ -18,7 +18,7 @@ const AuthGate = () => {
       setShowWelcome(true);
       setTimeout(() => {
         setShowWelcome(false);
-      }, 20000);
+      }, 3000);
     };
     checkWelcome();
   }, []);

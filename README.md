@@ -161,7 +161,7 @@ setUsers(response.data);
 
 ![alt text](folders.png)
 
-## 📝 Questions and Answers
+## 📝 Section 1: Theoretical (15 Marks)
 
 ### 1. What is the difference between React and React Native?
 
