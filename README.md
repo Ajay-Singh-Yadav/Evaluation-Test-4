@@ -1,97 +1,158 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Evaluation Test -4
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+This is a React Native mobile app with useful features:
 
-## Step 1: Start Metro
+✅ Login & Signup using Firebase Authentication
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+📝 Form Validation using Formik and Yup
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+🗂️ To-Do List with Redux Toolkit (Add, Edit, Delete tasks)
 
-```sh
-# Using npm
-npm start
+🌐 API Integration using Axios to fetch and show user data
 
-# OR using Yarn
-yarn start
-```
+📸 Camera Feature using React Native Vision Camera.
 
-## Step 2: Build and run your app
+## 📋 Features Overview
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### ✅ 1. Authentication with Firebase
+1. Firebase Email/Password Authentication integrated.
 
-### Android
+2. Packages:
 
-```sh
-# Using npm
-npm run android
+npm install @react-native-firebase/app
 
-# OR using Yarn
-yarn android
-```
+npm intsall @react-native-firebase/auth
 
-### iOS
+3. Auth flow includes:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+Signup
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+Login
 
-```sh
-bundle install
-```
+Logout
 
-Then, and every time you update your native dependencies, run:
+Protected routes after login
 
-```sh
-bundle exec pod install
-```
+4. Displays the logged-in user's email.
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## 📝 2. Formik + Yup for Form Handling
 
-```sh
-# Using npm
-npm run ios
+Used for managing form state and validation.
 
-# OR using Yarn
-yarn ios
-```
+Email and Password fields with validation
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Show/Hide password toggle
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+Real-time error handling
 
-## Step 3: Modify your app
+ #### Packages:
+  npm install formik yup 
 
-Now that you have successfully run the app, let's make changes!
+  Sample Usage:
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+ <Formik
+  initialValues={{ email: '', password: '' }}
+  validationSchema={validationSchema}
+  onSubmit={handleLogin}
+>
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## 🔄 3. Redux Toolkit for Global State Management
 
-## Congratulations! :tada:
+Setup using @reduxjs/toolkit and react-redux.
 
-You've successfully run and modified your React Native App. :partying_face:
+Used for:
 
-### Now what?
+Managing To-Do List
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+CRUD operations on tasks
 
-# Troubleshooting
+UI updates without prop-drilling
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Store Structure:
 
-# Learn More
+src/redux/store.js
 
-To learn more about React Native, take a look at the following resources:
+src/redux/slices/todoSlice.js
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+#### Features:
+
+Add, update, delete tasks
+
+
+## 🌐 4. API Integration with Axios
+
+Used axios for HTTP requests.
+
+Integrated https://jsonplaceholder.typicode.com/users
+
+Users are displayed via FlatList.
+
+#### Sample API Usage:
+
+const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+setUsers(response.data);
+
+## 📸 5. Camera Functionality
+
+Integrated using react-native-vision-camera.
+
+#### Features include:
+
+Switch front/rear camera
+
+Capture photo
+
+set on profile photo
+
+#### Components:
+
+CameraScreen.js 
+
+Uses useRef for camera control
+
+
+## 🗂 Folder Structure
+
+## 🛠 Setup Instructions
+
+### 1. Install Dependencies:
+
+npm install
+
+### 2. Firebase Setup:
+Add Firebase project.
+
+Enable Email/Password Auth.
+
+Add config to your project.
+
+
+### 3.Start Project:
+npx react-native run-android
+
+## 📸 Permissions Required
+
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> 
+
+## ✨ Future Improvements
+Add biometric login
+
+Use secure storage for tokens
+
+
+Firebase Firestore for real-time todos
+
+
+
+
+
+
+
+
+
+
