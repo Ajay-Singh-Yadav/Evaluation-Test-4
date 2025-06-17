@@ -29,25 +29,12 @@ npm intsall @react-native-firebase/auth
 
 3. Auth flow includes:
 
-   <small>
-
-**Used For:**
-- Managing To-Do List
-- CRUD operations on tasks
-- UI updates without prop-drilling
-
-**Store Structure:**
-- `src/redux/store.js`
-- `src/redux/slices/todoSlice.js`
-
-</small>
-<small>
 - Signup
 
 - Login
 
 - Logout
-</small>
+
 
 Protected routes after login
 
@@ -84,17 +71,17 @@ Setup using @reduxjs/toolkit and react-redux.
 
 Used for:
 
-Managing To-Do List
+  - Managing To-Do List
 
-CRUD operations on tasks
+  - CRUD operations on tasks
 
-UI updates without prop-drilling
+  - UI updates without prop-drilling
 
 Store Structure:
 
-src/redux/store.js
+ - src/redux/store.js
 
-src/redux/slices/todoSlice.js
+ - src/redux/slices/todoSlice.js
 
 #### Features:
 
@@ -105,7 +92,7 @@ Add, update, delete tasks
 
 Used axios for HTTP requests.
 
-Integrated https://jsonplaceholder.typicode.com/users
+ - Integrated https://jsonplaceholder.typicode.com/users
 
 Users are displayed via FlatList.
 
@@ -117,7 +104,7 @@ setUsers(response.data);
 
 ## 📸 5. Camera Functionality
 
-Integrated using react-native-vision-camera.
+  - Integrated using react-native-vision-camera.
 
 #### Features include:
 
@@ -148,11 +135,11 @@ npm install
 ```
 
 ### 2. Firebase Setup:
-Add Firebase project.
+ - Add Firebase project.
 
-Enable Email/Password Auth.
+ - Enable Email/Password Auth.
 
-Add config to your project.
+ - Add config to your project.
 
 
 ### 3.Start Project:
