@@ -28,12 +28,13 @@ npm intsall @react-native-firebase/auth
 ```
 
 3. Auth flow includes:
-
+<small>
 - Signup
 
 - Login
 
 - Logout
+</small>
 
 Protected routes after login
 
